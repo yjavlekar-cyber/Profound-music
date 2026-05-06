@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Profound | Official Site</title>
+    <!-- Cleaned Google Fonts (Removing local system paths) -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#fda9ff",
+                    "secondary": "#ffb690",
+                    "background": "#151316",
+                    "surface": "#151316",
+                    "on-background": "#e7e1e5",
+                    "on-surface": "#e7e1e5",
+                    "on-surface-variant": "#d7c0d3",
+                    "primary-container": "#c026d3",
+                    "secondary-container": "#ec6a06",
+                    "surface-container-low": "#1d1b1e",
+                    "surface-container-lowest": "#100d10"
+            },
+            "fontFamily": {
+                    "body": ["Inter", "sans-serif"],
+                    "headline": ["Syne", "sans-serif"]
+            },
+            "spacing": {
+                    "margin": "32px",
+                    "container-max": "1280px",
+                    "gutter": "24px"
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(33, 31, 34, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .nebula-bg {
+            background: radial-gradient(circle at 20% 30%, rgba(88, 0, 99, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(236, 106, 6, 0.1) 0%, transparent 50%);
+        }
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(21, 19, 22, 0.05), #151316), url('Images/_DSC9765.JPG.jpeg');
+            background-size: cover;
+            background-position: center 40%; /* Image position copied from your provided code snippet */
+        }
+        html { scroll-behavior: smooth; }
+        
+        /* Slideshow Animation */
+        .slideshow-container { position: relative; overflow: hidden; aspect-ratio: 1/1; border-radius: 4px; }
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
+        .slide.active { opacity: 1; }
+
+        /* Typography Override for Impact */
+        h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; text-transform: uppercase; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body nebula-bg selection:bg-primary selection:text-on-primary">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/10 transition-all duration-300" id="nav">
+        <div class="flex justify-between items-center h-20 px-margin w-full max-w-container-max mx-auto">
+            <!-- Removed profound small text logo from top -->
+            <div class="w-10"></div>
+            <div class="hidden md:flex items-center gap-gutter">
+                <a class="font-headline text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#music">Music</a>
+                <a class="font-headline text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#journey">Journey</a>
+                <a class="font-headline text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#watch">Watch</a>
+                <a class="font-headline text-xs uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#stats">Stats</a>
+            </div>
+            <a href="#subscribe" class="bg-primary-container text-white px-6 py-3 font-headline text-[10px] uppercase tracking-[0.2em] hover:opacity-80 transition-all active:scale-95">
+                Join Inner Circle
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex flex-col items-center justify-start overflow-hidden hero-bg">
+        <!-- TOP: White Text PROFOUND -->
+        <div class="relative z-10 text-center px-margin pt-32">
+            <h1 class="font-headline text-6xl md:text-8xl tracking-[0.5em] text-white/90 drop-shadow-2xl font-black">
+                PROFOUND
+            </h1>
+        </div>
+
+        <!-- EXTREME BOTTOM: Hindi Quote and Buttons -->
+        <div class="mt-auto relative z-10 w-full text-center px-margin pb-10">
+            <!-- Hindi Quote -->
+            <p class="font-body text-xl md:text-2xl text-on-surface-variant italic font-light tracking-wide opacity-95 drop-shadow-lg mb-6">
+                "इल्लज़ ज़ख्म में सब बन चूका हूँ |"
+            </p>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://open.spotify.com/artist/0NJsEUc7CCC6AVOVSKg6St" target="_blank" class="bg-primary text-black px-12 py-5 font-headline text-xs uppercase tracking-widest font-black shadow-2xl active:scale-95 transition-all">
+                    Listen Now
+                </a>
+                <a href="https://www.youtube.com/@Profound24" target="_blank" class="border-2 border-white text-white px-12 py-5 font-headline text-xs uppercase tracking-widest font-black backdrop-blur-md hover:bg-white hover:text-black active:scale-95 transition-all">
+                    Watch Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- New Release Section -->
+    <section class="py-32 px-margin max-w-container-max mx-auto" id="teaser">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative group">
+                <div class="absolute -inset-4 bg-gradient-to-tr from-secondary/30 to-primary/30 blur-2xl opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                <img alt="Lately Artwork" class="relative z-10 w-full aspect-square object-cover border border-white/10 shadow-2xl" src="Images/Lately_artwork.png"/>
+            </div>
+            <div>
+                <div class="inline-block bg-secondary text-black px-4 py-1 font-headline text-[10px] uppercase mb-6 font-bold tracking-widest">New Single Releasing</div>
+                <h2 class="font-headline text-6xl md:text-8xl mb-12 tracking-tighter font-bold uppercase">Lately</h2>
+                
+                <div class="grid grid-cols-4 gap-4 mb-12">
+                    <div class="glass-card p-6 text-center">
+                        <div class="font-headline text-4xl text-secondary" id="days">00</div>
+                        <div class="font-headline text-[10px] uppercase text-on-surface-variant tracking-widest mt-2">Days</div>
+                    </div>
+                    <div class="glass-card p-6 text-center">
+                        <div class="font-headline text-4xl text-secondary" id="hours">00</div>
+                        <div class="font-headline text-[10px] uppercase text-on-surface-variant tracking-widest mt-2">Hours</div>
+                    </div>
+                    <div class="glass-card p-6 text-center">
+                        <div class="font-headline text-4xl text-secondary" id="minutes">00</div>
+                        <div class="font-headline text-[10px] uppercase text-on-surface-variant tracking-widest mt-2">Mins</div>
+                    </div>
+                    <div class="glass-card p-6 text-center">
+                        <div class="font-headline text-4xl text-secondary" id="seconds">00</div>
+                        <div class="font-headline text-[10px] uppercase text-on-surface-variant tracking-widest mt-2">Secs</div>
+                    </div>
+                </div>
+                <a href="#subscribe" class="w-full flex items-center justify-center gap-4 bg-white text-black py-6 font-headline text-sm uppercase tracking-[0.2em] hover:bg-primary transition-colors font-black">
+                    <span class="material-symbols-outlined font-bold">mail</span>
+                    Ready For Release
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discography Section -->
+    <section class="py-32 bg-surface-container-low/50" id="music">
+        <div class="max-w-container-max mx-auto px-margin">
+            <h2 class="font-headline text-6xl mb-20 text-center tracking-tighter font-bold uppercase">Discography</h2>
+            <div class="grid lg:grid-cols-12 gap-12">
+                <!-- Top Songs List -->
+                <div class="lg:col-span-4 space-y-6">
+                    <h3 class="font-headline text-xs uppercase text-on-surface-variant mb-8 flex items-center gap-3 tracking-[0.3em]">
+                        <span class="material-symbols-outlined text-primary">trending_up</span>
+                        Top Streams
+                    </h3>
+                    <a href="https://open.spotify.com/track/7vwgZuHKvshV0crzoiD8Xe" target="_blank" class="block glass-card p-5 flex items-center gap-6 group hover:bg-white/5 transition-all border-l-4 border-l-primary">
+                        <div class="text-on-surface-variant font-headline text-sm">01</div>
+                        <div class="flex-1">
+                            <div class="font-headline text-lg text-white group-hover:text-primary transition-colors">KYU</div>
+                            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">163K+ STREAMS</div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/track/2QgnI1v9UQbVvG852ThfZM" target="_blank" class="block glass-card p-5 flex items-center gap-6 group hover:bg-white/5 transition-all">
+                        <div class="text-on-surface-variant font-headline text-sm">02</div>
+                        <div class="flex-1">
+                            <div class="font-headline text-lg text-white group-hover:text-primary transition-colors">DILASON MEIN</div>
+                            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">33K+ STREAMS</div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/search/Profound%20Takeoff" target="_blank" class="block glass-card p-5 flex items-center gap-6 group hover:bg-white/5 transition-all">
+                        <div class="text-on-surface-variant font-headline text-sm">03</div>
+                        <div class="flex-1">
+                            <div class="font-headline text-lg text-white group-hover:text-primary transition-colors">TAKEOFF</div>
+                            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">12K+ STREAMS</div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/track/3gLlNgM3HbcaLjoqmf32HA" target="_blank" class="block glass-card p-5 flex items-center gap-6 group hover:bg-white/5 transition-all">
+                        <div class="text-on-surface-variant font-headline text-sm">04</div>
+                        <div class="flex-1">
+                            <div class="font-headline text-lg text-white group-hover:text-primary transition-colors">WAQT</div>
+                            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">10K+ STREAMS</div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/track/3EovBKU6yqtVngktQUAO2a" target="_blank" class="block glass-card p-5 flex items-center gap-6 group hover:bg-white/5 transition-all">
+                        <div class="text-on-surface-variant font-headline text-sm">05</div>
+                        <div class="flex-1">
+                            <div class="font-headline text-lg text-white group-hover:text-primary transition-colors">WAJAH</div>
+                            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">4K+ STREAMS</div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Projects Grid -->
+                <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <a href="https://open.spotify.com/album/3dfe1R6rShP50oUGRVpypl" target="_blank" class="relative aspect-square overflow-hidden border border-white/10 group cursor-pointer shadow-xl">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2737058ae891effe40db3e552bb" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-center p-6">
+                            <div>
+                                <p class="font-headline text-white text-sm tracking-widest mb-2 uppercase">Fading Ties</p>
+                                <p class="font-headline text-[10px] text-secondary tracking-[0.2em]">EP • 2023</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/album/4sj391iTbvUubDgMM1Np9I" target="_blank" class="relative aspect-square overflow-hidden border border-white/10 group cursor-pointer shadow-xl">
+                        <img src="https://i.scdn.co/image/ab67616d0000b27302e776b905e525aaf4e1b44a" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-center p-6">
+                            <div>
+                                <p class="font-headline text-white text-sm tracking-widest mb-2 uppercase">Love & Beyond</p>
+                                <p class="font-headline text-[10px] text-secondary tracking-[0.2em]">EP • 2026</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/album/6NeuFjU7fpIPevxO7fg04c" target="_blank" class="relative aspect-square overflow-hidden border border-white/10 group cursor-pointer shadow-xl">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2733232b4e2880dca886d28dd86" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-center p-6">
+                            <div>
+                                <p class="font-headline text-white text-sm tracking-widest mb-2 uppercase text-xs">Sharaab Ka Kya Dosh?</p>
+                                <p class="font-headline text-[10px] text-secondary tracking-[0.2em]">ALBUM • 2025</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/album/4HJDik4COuTZ6CXQBDYzrj" target="_blank" class="relative aspect-square overflow-hidden border border-white/10 group cursor-pointer shadow-xl">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273184ac31b9b79850e280b477c" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-center p-6">
+                            <div>
+                                <p class="font-headline text-white text-sm tracking-widest mb-2 uppercase">How To Love?</p>
+                                <p class="font-headline text-[10px] text-secondary tracking-[0.2em]">EP • 2024</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="https://open.spotify.com/album/5w62FWlqo5Jdj6ZbvswMx7" target="_blank" class="relative aspect-square overflow-hidden border border-white/10 group cursor-pointer shadow-xl">
+                        <img src="https://i.scdn.co/image/ab67616d0000b2736745dc7ef80107a703b42f86" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-center p-6">
+                            <div>
+                                <p class="font-headline text-white text-sm tracking-widest mb-2 uppercase text-xs">Music Bros & Liquor</p>
+                                <p class="font-headline text-[10px] text-secondary tracking-[0.2em]">SINGLE • 2022</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Journey Section -->
+    <section class="py-32 relative overflow-hidden bg-background" id="journey">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[150px]"></div>
+        <div class="max-w-container-max mx-auto px-margin">
+            <div class="flex flex-col md:flex-row items-center gap-20">
+                <div class="w-full md:w-1/2">
+                    <h2 class="font-headline text-6xl mb-12 tracking-tighter text-white uppercase font-bold">The Journey</h2>
+                    <p class="font-body text-xl text-on-surface-variant mb-8 leading-relaxed font-light">
+                        Hailing from Mumbai, Profound is part of a new wave of independent hip-hop artists shaping the city’s evolving underground sound. His music reflects a raw, unfiltered perspective blending street narratives and contemporary rap influences.
+                    </p>
+                    <p class="font-body text-xl text-on-surface-variant leading-relaxed font-light">
+                        Since 2018, he has been dismantling traditional genre boundaries, blending sub-bass heavy trap with ethereal soundscapes to create a unique frequency that resonates through the cosmos.
+                    </p>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="slideshow-container shadow-2xl ring-1 ring-white/10">
+                        <img src="Images/_DSC9747.JPG.jpeg" class="slide active w-full h-full object-cover"/>
+                        <img src="Images/IMG_0084.jpg" class="slide w-full h-full object-cover"/>
+                        <img src="Images/IMG_0085.jpg" class="slide w-full h-full object-cover"/>
+                        <img src="Images/IMG_0028.jpg" class="slide w-full h-full object-cover"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-32 bg-surface-container-lowest" id="stats">
+        <div class="max-w-container-max mx-auto px-margin">
+            <h2 class="font-headline text-5xl mb-20 text-center tracking-tighter font-bold uppercase">Stats</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="glass-card p-10 text-center border-t-4 border-t-primary shadow-xl">
+                    <div class="font-headline text-5xl text-white mb-2">106K</div>
+                    <div class="font-headline text-[10px] text-on-surface-variant tracking-[0.3em] uppercase">Listeners</div>
+                </div>
+                <div class="glass-card p-10 text-center border-t-4 border-t-secondary shadow-xl">
+                    <div class="font-headline text-5xl text-white mb-2">7.9K</div>
+                    <div class="font-headline text-[10px] text-on-surface-variant tracking-[0.3em] uppercase">Hours</div>
+                </div>
+                <div class="glass-card p-10 text-center border-t-4 border-t-primary shadow-xl">
+                    <div class="font-headline text-5xl text-white mb-2">176K</div>
+                    <div class="font-headline text-[10px] text-on-surface-variant tracking-[0.3em] uppercase">Streams</div>
+                </div>
+                <div class="glass-card p-10 text-center border-t-4 border-t-secondary shadow-xl">
+                    <div class="font-headline text-5xl text-white mb-2">109</div>
+                    <div class="font-headline text-[10px] text-on-surface-variant tracking-[0.3em] uppercase">Countries</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Watch Now Section -->
+    <section class="py-32 px-margin" id="watch">
+        <div class="max-w-container-max mx-auto">
+            <div class="flex justify-between items-end mb-16">
+                <h2 class="font-headline text-6xl tracking-tighter font-bold uppercase">Watch Now</h2>
+                <a class="font-headline text-xs text-primary uppercase border-b-2 border-primary tracking-[0.2em] pb-1" href="https://www.youtube.com/@Profound24" target="_blank">Archive</a>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <a href="https://youtu.be/VtuQd9BTXpY" target="_blank" class="relative aspect-video glass-card overflow-hidden group shadow-2xl">
+                    <div class="absolute inset-0 bg-black/40 z-10"></div>
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-black group-hover:scale-110 transition-transform shadow-2xl">
+                            <span class="material-symbols-outlined text-4xl font-bold">play_arrow</span>
+                        </div>
+                    </div>
+                    <img src="https://img.youtube.com/vi/VtuQd9BTXpY/hqdefault.jpg" class="w-full h-full object-cover transition-all duration-700"/>
+                </a>
+                <a href="https://youtu.be/ZOBQbOl88Lc" target="_blank" class="relative aspect-video glass-card overflow-hidden group shadow-2xl">
+                    <div class="absolute inset-0 bg-black/40 z-10"></div>
+                    <div class="absolute inset-0 flex items-center justify-center z-20">
+                        <div class="w-20 h-20 bg-secondary rounded-full flex items-center justify-center text-black group-hover:scale-110 transition-transform shadow-2xl">
+                            <span class="material-symbols-outlined text-4xl font-bold">play_arrow</span>
+                        </div>
+                    </div>
+                    <img src="https://img.youtube.com/vi/ZOBQbOl88Lc/hqdefault.jpg" class="w-full h-full object-cover transition-all duration-700"/>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborations Section -->
+    <section class="py-32 bg-surface-container-lowest" id="collabs">
+        <div class="max-w-container-max mx-auto px-margin text-center">
+            <h2 class="font-headline text-xs uppercase tracking-[0.5em] text-on-surface-variant mb-24 font-bold">Collaborations</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <a href="https://open.spotify.com/album/5IxmU8hsd2b9oRLV7wltLs" target="_blank" class="glass-card aspect-square overflow-hidden group transition-all hover:-translate-y-2">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273034ef56e783558d18c1a1df6" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"/>
+                </a>
+                <a href="https://open.spotify.com/album/72WYyZFOVFWTv8NOh4UMRI" target="_blank" class="glass-card aspect-square overflow-hidden group transition-all hover:-translate-y-2">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273c9cbb0ccc9d7e11ed50aa7d8" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"/>
+                </a>
+                <a href="https://open.spotify.com/track/4SXk4MABtL5PTM9CcFHhqQ" target="_blank" class="glass-card aspect-square overflow-hidden group transition-all hover:-translate-y-2">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273a4d23b41b10f4573246b8322" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"/>
+                </a>
+                <a href="https://open.spotify.com/track/2rQpKosSR0gQGXTZsXUst0" target="_blank" class="glass-card aspect-square overflow-hidden group transition-all hover:-translate-y-2">
+                    <img src="https://i.scdn.co/image/ab67616d0000b273da5bdff80ee6494a59103f2e" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"/>
+                </a>
+                <a href="https://open.spotify.com/track/7vwgZuHKvshV0crzoiD8Xe" target="_blank" class="glass-card aspect-square overflow-hidden group transition-all hover:-translate-y-2">
+                    <img src="https://i.scdn.co/image/ab67616d0000b2732458cebb2377bf74a018483f" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"/>
+                </a>
+                <a href="https://open.spotify.com/album/4UrD7ahxbiuQag8LCbQ6z5" target="_blank" class="glass-card aspect-square overflow-hidden group transition-all hover:-translate-y-2">
+                    <img src="https://i.scdn.co/image/ab67616d0000b27334121dc29699f41a03e2060f" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"/>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Inner Circle Section -->
+    <section class="py-40 relative" id="subscribe">
+        <div class="max-w-4xl mx-auto px-margin text-center relative z-10">
+            <div class="glass-card p-20 border-primary/20 shadow-2xl">
+                <h2 class="font-headline text-6xl mb-8 tracking-tighter text-white font-bold uppercase">JOIN THE INNER CIRCLE</h2>
+                <p class="font-body text-xl text-on-surface-variant mb-12 font-light leading-relaxed">
+                    Get exclusive first access of the new releases and limited merch drop.
+                </p>
+                <form class="flex flex-col md:flex-row gap-6 max-w-2xl mx-auto" id="subscribe-form">
+                    <input class="flex-1 bg-surface-container-low border border-white/10 px-8 py-6 font-headline text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none text-white tracking-widest placeholder:text-white/20 uppercase" id="subscriber-email" placeholder="ENTER YOUR EMAIL-ID" type="email" required/>
+                    <button class="bg-primary text-black px-12 py-6 font-headline text-sm uppercase tracking-widest font-black hover:brightness-110 active:scale-95 transition-all shadow-xl" type="submit">
+                        Register
+                    </button>
+                </form>
+                <p id="subscribe-msg" class="mt-8 font-headline text-xs tracking-[0.2em] font-bold text-primary uppercase"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-lowest border-t border-white/5 w-full py-20">
+        <div class="flex flex-col md:flex-row justify-between items-center px-margin gap-gutter w-full max-w-container-max mx-auto">
+            <div class="font-headline text-3xl font-black text-primary tracking-tighter uppercase">PROFOUND</div>
+            <div class="flex flex-wrap justify-center gap-12 text-on-surface-variant font-headline text-[10px] uppercase tracking-[0.3em] font-bold">
+                <a class="hover:text-primary transition-colors" href="https://www.instagram.com/profound.here/" target="_blank">Instagram</a>
+                <a class="hover:text-primary transition-colors" href="https://open.spotify.com/artist/0NJsEUc7CCC6AVOVSKg6St" target="_blank">Spotify</a>
+                <a class="hover:text-primary transition-colors" href="https://www.youtube.com/@Profound24" target="_blank">YouTube</a>
+            </div>
+            <div class="font-headline text-[10px] text-secondary text-center md:text-right uppercase tracking-[0.4em] font-bold">
+                © 2026 PROFOUNDMUSIC
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-background/95', 'shadow-2xl');
+                nav.classList.remove('bg-background/80');
+            } else {
+                nav.classList.add('bg-background/80');
+                nav.classList.remove('bg-background/95', 'shadow-2xl');
+            }
+        });
+
+        // Timer Logic (Set for Lately release)
+        const releaseDate = new Date("May 9, 2026 00:00:00").getTime();
+        const updateTimer = () => {
+            const now = new Date().getTime();
+            const dist = releaseDate - now;
+            if (dist < 0) return;
+            document.getElementById("days").innerText = String(Math.floor(dist / (1000 * 60 * 60 * 24))).padStart(2, '0');
+            document.getElementById("hours").innerText = String(Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(Math.floor((dist % (1000 * 60)) / 1000)).padStart(2, '0');
+        };
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Slideshow Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const nextSlide = () => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        };
+        setInterval(nextSlide, 4000);
+
+        // Subscriber Form Logic
+        document.getElementById('subscribe-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('subscriber-email').value;
+            const msg = document.getElementById('subscribe-msg');
+            
+            try {
+                const res = await fetch('http://localhost:3000/api/subscribe', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+                
+                if (res.ok) {
+                    msg.innerText = "WELCOME TO THE INNER CIRCLE.";
+                    document.getElementById('subscribe-form').reset();
+                } else {
+                    msg.innerText = data.error || "TRANSMISSION FAILED.";
+                }
+            } catch (err) {
+                msg.innerText = "CONNECTION LOST.";
+            }
+        });
+    </script>
+</body></html>

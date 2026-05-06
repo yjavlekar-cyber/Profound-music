@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # TIER 1: FRONTEND
+  frontend:
+    build: ./frontend
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  # TIER 2: BACKEND
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_USER=profound_user
+      - DB_PASSWORD=REMOVED_SECRET
+      - DB_NAME=profound_db
+      - DB_HOST=db
+    depends_on:
+      - db
+
+  # TIER 3: DATABASE
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_USER=profound_user
+      - POSTGRES_PASSWORD=REMOVED_SECRET
+      - POSTGRES_DB=profound_db
+    volumes:
+      - ./database_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks:
+  default:
+    name: profound_network_v2

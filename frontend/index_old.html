@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profound | Official Site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Poppins:wght@300;400;700&family=Syncopate:wght@400;700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --primary: #8E44AD; 
+            --accent: #E0E6ED; 
+            --bg-deep: #050505; 
+            --bg-surface: rgba(13, 13, 21, 0.85); 
+            --text-main: #FFFFFF;
+            --text-dim: #7F8C8D;
+            --glow: 0 0 20px rgba(142, 68, 173, 0.5);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-deep); color: var(--text-main); font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+        nav { padding: 40px 10%; display: flex; justify-content: space-between; align-items: center; position: fixed; width: 100%; top: 0; background: transparent; z-index: 2000; transition: 0.5s; }
+        nav.scrolled { background: rgba(5,5,5,0.95); padding: 20px 10%; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: 8px; text-transform: uppercase; color: var(--text-main); }
+        .nav-links { display: flex; gap: 50px; }
+        .nav-links a { text-decoration: none; color: var(--text-dim); font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; transition: 0.4s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* PHASE 1: Hero Section */
+        .hero-section {
+            height: 100vh;
+            width: 100%;
+            background-image: url('Images/_DSC9765.JPG.jpeg');
+            background-size: cover;
+            background-position: center 20%;
+            filter: grayscale(1) contrast(1.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-deep));
+        }
+
+        .intro-title {
+            position: relative;
+            z-index: 10;
+            font-family: 'Syne', sans-serif;
+            font-size: 10rem;
+            font-weight: 800;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            animation: fadeIn 2s ease-out;
+            text-align: center;
+            line-height: 0.8;
+            color: var(--text-main);
+            filter: none;
+        }
+
+        .hero-quote {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            text-align: center;
+            opacity: 0.6;
+            width: 100%;
+        }
+
+        /* PHASE 2: Teaser & Timer */
+        .teaser-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1A0B2E 0%, #050505 100%);
+            border-top: 1px solid rgba(142, 68, 173, 0.2);
+        }
+
+        .upcoming-teaser {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(142, 68, 173, 0.4);
+            box-shadow: var(--glow);
+            background: #000;
+        }
+        .teaser-img { width: 100%; height: 100%; object-fit: cover; }
+        .teaser-overlay { position: absolute; top: 10px; left: 0; width: 100%; }
+
+        #timer { display: flex; gap: 30px; margin-top: 20px; }
+        .timer-unit { text-align: center; }
+        .timer-num { font-size: 3rem; font-weight: 900; font-family: 'Syncopate', sans-serif; color: var(--primary); }
+        .timer-label { font-size: 0.6rem; letter-spacing: 3px; color: var(--text-dim); text-transform: uppercase; }
+
+        section { padding: 120px 10%; position: relative; background-attachment: fixed; background-size: cover; background-position: center; }
+        section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 0; }
+        section > * { position: relative; z-index: 1; }
+
+        #music { background-image: url('Images/IMG_0084.jpg'); }
+        #youtube { background-image: url('Images/IMG_0085.jpg'); }
+        #about { background-image: url('Images/IMG_0028.jpg'); }
+        #collabs { background-image: url('Images/IMG_0045.jpg'); }
+
+        h2 { font-family: 'Syncopate', sans-serif; font-size: 1.5rem; letter-spacing: 8px; margin-bottom: 60px; border-left: 4px solid var(--primary); padding-left: 20px; }
+
+        /* General Styles Re-applied */
+        .discography-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+        .top-streams { background: var(--bg-surface); padding: 40px; border: 1px solid rgba(142, 68, 173, 0.3); border-radius: 4px; box-shadow: 10px 10px 30px rgba(0,0,0,0.5); }
+        .stream-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.8rem; }
+        .stream-item:last-child { border-bottom: none; }
+        
+        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .project-card { position: relative; border: 1px solid rgba(255,255,255,0.05); aspect-ratio: 1; overflow: hidden; }
+        .project-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .project-card:hover img { opacity: 1; transform: scale(1.1); }
+        .project-label { position: absolute; bottom: 20px; left: 20px; font-size: 0.6rem; letter-spacing: 2px; background: rgba(0,0,0,0.8); padding: 5px 10px; z-index: 10; }
+
+        .yt-box { background: var(--bg-surface); padding: 50px; border: 1px solid rgba(142, 68, 173, 0.2); text-align: center; }
+        .yt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px; }
+        .art-card { aspect-ratio: 16/9; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.1); }
+        .art-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+        .art-card:hover img { transform: scale(1.05); }
+
+        .collab-artworks { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        .collab-art { aspect-ratio: 1; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
+        .collab-art img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.4s; }
+        .collab-art:hover img { filter: grayscale(0); transform: scale(1.05); }
+
+        footer { padding: 80px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000; position: relative; z-index: 10; }
+        .socials a { color: var(--text-dim); text-decoration: none; margin: 0 25px; font-size: 0.7rem; letter-spacing: 4px; font-weight: 700; transition: 0.3s; }
+        .socials a:hover { color: var(--primary); }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) {
+            .intro-title { font-size: 4rem; letter-spacing: 2px; }
+            .discography-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">Profound</div>
+    <div class="nav-links">
+        <a href="#teaser">New Release</a>
+        <a href="#music">Discography</a>
+        <a href="#youtube">Watch Now</a>
+        <a href="#about">About</a>
+    </div>
+</nav>
+
+<!-- PHASE 1: Hero -->
+<div class="hero-section">
+    <div class="intro-title">Profound</div>
+    <div class="hero-quote">इल्लज़ ज़ख्म में सब बन चूका हूँ |</div>
+</div>
+
+<!-- PHASE 2: Teaser & Timer -->
+<section class="teaser-section" id="teaser">
+    <div class="upcoming-teaser">
+        <div class="teaser-overlay">
+            <p style="font-size: 0.5rem; letter-spacing: 5px; color: var(--primary); font-weight: 900; background: rgba(0,0,0,0.8); padding: 8px 0; text-transform: uppercase;">NEW SINGLE RELEASING</p>
+        </div>
+        <img src="Images/Teri yadon se official artwork.png" class="teaser-img" alt="Teri Yaadon Se Official Artwork">
+    </div>
+    
+    <div id="timer">
+        <div class="timer-unit"><span class="timer-num" id="days">00</span><br><span class="timer-label">Days</span></div>
+        <div class="timer-unit"><span class="timer-num" id="hours">00</span><br><span class="timer-label">Hours</span></div>
+        <div class="timer-unit"><span class="timer-num" id="minutes">00</span><br><span class="timer-label">Mins</span></div>
+    </div>
+    
+    <div style="margin-top: 40px;">
+        <span style="padding: 15px 40px; border: 1px solid var(--primary); color: white; text-decoration: none; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; cursor: default;">READY FOR THE RELEASE</span>
+    </div>
+</section>
+
+<!-- NEW SECTION: Subscriber Form -->
+<section id="subscribe" style="background-image: url('Images/IMG_0085.jpg'); padding: 80px 10%; text-align: center;">
+    <div class="yt-box" style="max-width: 600px; margin: 0 auto; padding: 40px;">
+        <h2 style="border:none; text-align:center; padding:0; margin-bottom:20px; font-size: 1.2rem;">JOIN THE INNER CIRCLE</h2>
+        <p style="font-size: 0.7rem; color: var(--text-dim); letter-spacing: 2px; margin-bottom: 30px;">GET NOTIFIED THE MOMENT 'TERI YAADON SE' DROPS.</p>
+        <form id="subscribe-form" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="email" id="subscriber-email" placeholder="ENTER YOUR EMAIL" required 
+                style="background: rgba(0,0,0,0.5); border: 1px solid rgba(142, 68, 173, 0.5); padding: 15px; color: white; font-family: 'Poppins', sans-serif; font-size: 0.8rem; letter-spacing: 2px; text-align: center;">
+            <button type="submit" 
+                style="background: var(--primary); border: none; padding: 15px; color: white; font-weight: 800; letter-spacing: 3px; cursor: pointer; transition: 0.3s;">SUBSCRIBE</button>
+        </form>
+        <p id="subscribe-msg" style="margin-top: 20px; font-size: 0.65rem; letter-spacing: 1px;"></p>
+    </div>
+</section>
+
+<section id="music">
+    <h2>DISCOGRAPHY</h2>
+    <div class="discography-container">
+        <div class="top-streams">
+            <h4 style="margin-bottom: 30px; font-size: 0.8rem; letter-spacing: 4px; color: var(--primary);">TOP 5 STREAMED SONGS</h4>
+            <div class="stream-item"><span>01. KYU</span> <span style="color:var(--text-dim)">163K+ STREAMS</span></div>
+            <div class="stream-item"><span>02. DILASON MEIN</span> <span style="color:var(--text-dim)">33K+ STREAMS</span></div>
+            <div class="stream-item"><span>03. TAKEOFF</span> <span style="color:var(--text-dim)">12K+ STREAMS</span></div>
+            <div class="stream-item"><span>04. WAQT</span> <span style="color:var(--text-dim)">10K+ STREAMS</span></div>
+            <div class="stream-item"><span>05. WAJAH</span> <span style="color:var(--text-dim)">4K+ STREAMS</span></div>
+        </div>
+        <div class="projects-grid">
+            <a href="https://open.spotify.com/album/4sj391iTbvUubDgMM1Np9I?si=z4GkFHIHQsegWuyGJiV3Eg" target="_blank" class="project-card">
+                <img src="https://i.scdn.co/image/ab67616d0000b27302e776b905e525aaf4e1b44a">
+                <div class="project-label">SINGLE: LOVE & BEYOND</div>
+            </a>
+            <a href="https://open.spotify.com/album/6NeuFjU7fpIPevxO7fg04c?si=gWu4yMasSXGtTq-wGv73qw" target="_blank" class="project-card">
+                <img src="https://i.scdn.co/image/ab67616d0000b2733232b4e2880dca886d28dd86">
+                <div class="project-label">ALBUM: SHARAAB KA KYA DOSH?</div>
+            </a>
+            <a href="https://open.spotify.com/album/4HJDik4COuTZ6CXQBDYzrj?si=v7qRSQoJSUWpWK9hiWC0uw" target="_blank" class="project-card">
+                <img src="https://i.scdn.co/image/ab67616d0000b273184ac31b9b79850e280b477c">
+                <div class="project-label">EP: HOW TO LOVE?</div>
+            </a>
+            <a href="https://open.spotify.com/album/3dfe1R6rShP50oUGRVpypl?si=gRDcWiuaSsqsJVZcnC4mPQ" target="_blank" class="project-card">
+                <img src="https://i.scdn.co/image/ab67616d0000b2737058ae891effe40db3e552bb">
+                <div class="project-label">EP: FADING TIES</div>
+            </a>
+            <a href="https://open.spotify.com/album/5w62FWlqo5Jdj6ZbvswMx7?si=G3k0WO1mS1SzoFcQLBlHKw" target="_blank" class="project-card">
+                <img src="https://i.scdn.co/image/ab67616d0000b2736745dc7ef80107a703b42f86">
+                <div class="project-label">SINGLE: MUSIC BROS & LIQUOR</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="youtube">
+    <div class="yt-box">
+        <h2 style="border:none; text-align:center; padding:0; margin-bottom:10px;">WATCH NOW</h2>
+        <div class="yt-grid">
+            <a href="https://youtu.be/VtuQd9BTXpY" target="_blank" class="art-card"><img src="https://img.youtube.com/vi/VtuQd9BTXpY/hqdefault.jpg"></a>
+            <a href="https://youtu.be/ZOBQbOl88Lc" target="_blank" class="art-card"><img src="https://img.youtube.com/vi/ZOBQbOl88Lc/hqdefault.jpg"></a>
+            <a href="https://youtu.be/Y4sSzk9mMxM" target="_blank" class="art-card"><img src="https://img.youtube.com/vi/Y4sSzk9mMxM/hqdefault.jpg"></a>
+            <a href="https://youtu.be/iZa0SgyiscA" target="_blank" class="art-card"><img src="https://img.youtube.com/vi/iZa0SgyiscA/hqdefault.jpg"></a>
+            <a href="https://youtu.be/58CnFHE_cGI" target="_blank" class="art-card"><img src="https://img.youtube.com/vi/58CnFHE_cGI/hqdefault.jpg"></a>
+            <a href="https://youtu.be/rADBTE-OrNo" target="_blank" class="art-card"><img src="https://img.youtube.com/vi/rADBTE-OrNo/hqdefault.jpg"></a>
+            <a href="https://youtu.be/iVJyMMbsFX4" target="_blank" class="art-card"><img src="https://img.youtube.com/vi/iVJyMMbsFX4/hqdefault.jpg"></a>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>ABOUT:</h2>
+    <div style="max-width: 800px; margin: 0 auto; line-height: 2.2; color: var(--text-dim); text-align: justify; font-size: 1.1rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 60px;">
+        <p>Hailing from Mumbai, Profound is part of a new wave of independent hip-hop artists shaping the city’s evolving underground sound. With a discography rooted in singles and consistent releases, his music reflects a raw, unfiltered perspective blending introspection, street narratives, and contemporary rap influences.</p>
+        <p style="margin-top: 20px;">Rather than chasing trends, Profound’s approach is grounded in authenticity. His tracks carry a stripped-down, honest energy—where storytelling meets mood driven production, creating a sound that feels both personal and relatable. Each release adds another layer to his identity, building a catalogue that speaks to growth, struggle, and self-expression.</p>
+        <p style="margin-top: 20px;">Emerging from one of India’s most culturally diverse cities, Profound draws inspiration from Mumbai’s fast-paced life and contrasting realities. His music captures that tension between ambition and survival, individuality and environment making his sound resonate with listeners navigating similar journeys.</p>
+    </div>
+</section>
+
+<section id="collabs">
+    <h2>COLLABORATIONS</h2>
+    <div class="collab-artworks">
+        <a href="https://open.spotify.com/album/5IxmU8hsd2b9oRLV7wltLs" title="Purani Yaadein - Kenno.p" target="_blank" class="collab-art"><img src="https://i.scdn.co/image/ab67616d0000b273034ef56e783558d18c1a1df6"></a>
+        <a href="https://open.spotify.com/album/72WYyZFOVFWTv8NOh4UMRI" title="Talash - Kenno.p" target="_blank" class="collab-art"><img src="https://i.scdn.co/image/ab67616d0000b273c9cbb0ccc9d7e11ed50aa7d8"></a>
+        <a href="https://open.spotify.com/track/4SXk4MABtL5PTM9CcFHhqQ" title="Bagawat - Kenno.p, Profound" target="_blank" class="collab-art"><img src="https://i.scdn.co/image/ab67616d0000b273a4d23b41b10f4573246b8322"></a>
+        <a href="https://open.spotify.com/track/2rQpKosSR0gQGXTZsXUst0" title="Karobar - Kenno.p, Profound" target="_blank" class="collab-art"><img src="https://i.scdn.co/image/ab67616d0000b273da5bdff80ee6494a59103f2e"></a>
+        <a href="https://open.spotify.com/track/7vwgZuHKvshV0crzoiD8Xe" title="Kyu - YUNGSOUL, Azaad, Profound" target="_blank" class="collab-art"><img src="https://i.scdn.co/image/ab67616d0000b2732458cebb2377bf74a018483f"></a>
+        <a href="https://open.spotify.com/album/4UrD7ahxbiuQag8LCbQ6z5" title="MAYA (EP) - Gabroo, Profound" target="_blank" class="collab-art"><img src="https://i.scdn.co/image/ab67616d0000b27334121dc29699f41a03e2060f"></a>
+    </div>
+</section>
+
+<footer>
+    <div class="socials" style="margin-bottom: 30px;">
+        <a href="https://www.instagram.com/profound.here/" target="_blank">INSTAGRAM</a>
+        <a href="https://open.spotify.com/artist/0NJsEUc7CCC6AVOVSKg6St" target="_blank">SPOTIFY</a>
+        <a href="https://www.youtube.com/@Profound24" target="_blank">YOUTUBE</a>
+    </div>
+    <p style="font-size: 0.6rem; color: var(--text-dim); letter-spacing: 5px;">&copy; 2026 PROFOUND MUSIC</p>
+</footer>
+
+<script>
+    // Navigation Scroll Effect
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+    });
+
+    // Timer Logic
+    const releaseDate = new Date("May 9, 2026 00:00:00").getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const dist = releaseDate - now;
+        document.getElementById("days").innerText = String(Math.floor(dist / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        document.getElementById("hours").innerText = String(Math.floor((dist % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        document.getElementById("minutes").innerText = String(Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    }, 1000);
+
+    // Backend Sync
+    fetch('http://localhost:3000/api/artist')
+        .then(res => res.json())
+        .then(data => {
+            if(data.bio) document.getElementById('artist-bio').innerText = data.bio;
+        });
+
+    // Subscriber Form Logic
+    document.getElementById('subscribe-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('subscriber-email').value;
+        const msg = document.getElementById('subscribe-msg');
+        
+        try {
+            const res = await fetch('http://localhost:3000/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            });
+            const data = await res.json();
+            
+            if (res.ok) {
+                msg.style.color = '#2ECC71';
+                msg.innerText = data.message;
+                document.getElementById('subscribe-form').reset();
+            } else {
+                msg.style.color = '#E74C3C';
+                msg.innerText = data.error;
+            }
+        } catch (err) {
+            msg.style.color = '#E74C3C';
+            msg.innerText = "Connection lost. Try again later.";
+        }
+    });
+</script>
+</body>
+</html>
