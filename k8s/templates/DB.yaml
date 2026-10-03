@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: database
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+      - name: postgres
+        image: "{{ .Values.database.repository }}:{{ .Values.database.tag }}"
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5432
+            protocol: TCP
+        envFrom:
+          - secretRef:
+              name: secret
+        volumeMounts:
+          - name: postgres-data
+            mountPath: /var/lib/postgresql/data
+        resources:
+          requests:
+            cpu: {{ .Values.database.cpuRequest | quote }}
+            memory: {{ .Values.database.memoryRequest | quote }}
+          limits:
+            cpu: {{ .Values.database.cpuLimit | quote }}
+            memory: {{ .Values.database.memoryLimit | quote }}
+        readinessProbe:
+          exec:
+            command:
+              - pg_isready
+              - -U
+              - $(POSTGRES_USER)
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - pg_isready
+              - -U
+              - $(POSTGRES_USER)
+          initialDelaySeconds: 30
+          periodSeconds: 20
+
+    volumes:
+      - name: postgres-data
+        persistentVolumeClaim:
+          claimName: website-db-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: database
+
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+  selector:
+    app: database
+
+
+
+  

@@ -1,0 +1,43 @@
+# values.yaml
+
+# 1. Global Configurations
+global:
+  namespace: "profound-music"
+
+# 2. Database Properties
+database:
+  repository: postgres
+  tag: 15
+  storageSize: 20Gi
+  cpuRequest: "100m"
+  cpuLimit: "400m"
+  memoryRequest: "64Mi"
+  memoryLimit: "256Mi"
+
+# 3. Backend Properties (Added here!)
+backend:
+  repository: 
+  tag: v1.0.0
+  replicas: 2                       # Databases usually run 1 replica, but backends can scale!
+  port: 3000
+  cpuRequest: "100m"
+  cpuLimit: "400m"
+  memoryRequest: "64Mi"
+  memoryLimit: "256Mi"
+
+# 4. Frontend Properties
+frontend:
+  repository:
+  tag: v1.0
+  replicas: 2
+  port: "8080"
+  cpuRequest: "50m"
+  cpuLimit: "200m"
+  memoryRequest: "16Mi"
+  memoryLimit: "64Mi"
+
+# 5. Ingress Controller Properties
+ingress:
+  enabled: true
+  host: profoundmusic.com
+  className: nginx

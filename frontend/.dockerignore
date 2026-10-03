@@ -1,0 +1,33 @@
+# Dockerfile itself (never needed inside the image)
+Dockerfile
+.dockerignore
+
+# Old / test files (not needed in production)
+index_old.html
+test_spotify.html
+
+# Git
+.git
+.gitignore
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+*.cert
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Docs / non-production files
+*.md
+LICENSE

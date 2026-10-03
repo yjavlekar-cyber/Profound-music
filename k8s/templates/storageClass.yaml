@@ -1,0 +1,10 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: website-SC
+provisioner: ebs.csi.aws.com # Official AWS EBS CSI driver
+volumeBindingMode: WaitForFirstConsumer # Delays disk creation until the DB pod starts
+allowVolumeExpansion: true
+parameters:
+  type: gp3
+  fsType: ext4

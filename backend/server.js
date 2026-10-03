@@ -15,6 +15,16 @@ const pool = new Pool({
   port: 5432,
 });
 
+// ── Health Check ──
+app.get('/api/health', async (req, res) => {
+  try {
+    await pool.query('SELECT 1');
+    res.status(200).json({ status: 'healthy', uptime: process.uptime(), database: 'connected' });
+  } catch (err) {
+    res.status(503).json({ status: 'unhealthy', database: 'disconnected' });
+  }
+});
+
 app.get('/api/artist', async (req, res) => {
   try {
     const result = await pool.query('SELECT name, genre, bio FROM artist_info LIMIT 1');

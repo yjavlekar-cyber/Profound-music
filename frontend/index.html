@@ -49,7 +49,7 @@
         .hero-bg {
             background-image: linear-gradient(to bottom, rgba(21, 19, 22, 0.05), #151316), url('Images/_DSC9765.JPG.jpeg');
             background-size: cover;
-            background-position: center 40%; /* Image position copied from your provided code snippet */
+            background-position: center 30%;
         }
         html { scroll-behavior: smooth; }
         
@@ -93,7 +93,7 @@
         <div class="mt-auto relative z-10 w-full text-center px-margin pb-10">
             <!-- Hindi Quote -->
             <p class="font-body text-xl md:text-2xl text-on-surface-variant italic font-light tracking-wide opacity-95 drop-shadow-lg mb-6">
-                "इल्लज़ ज़ख्म में सब बन चूका हूँ |"
+                "इलाज ज़ख्म में सब बन चूका हूँ |"
             </p>
             
             <!-- Action Buttons -->
@@ -107,6 +107,7 @@
             </div>
         </div>
     </header>
+
 
     <!-- New Release Section -->
     <section class="py-32 px-margin max-w-container-max mx-auto" id="teaser">
@@ -400,7 +401,7 @@
         });
 
         // Timer Logic (Set for Lately release)
-        const releaseDate = new Date("May 9, 2026 00:00:00").getTime();
+        const releaseDate = new Date("October 17, 2026 12:00:00").getTime();
         const updateTimer = () => {
             const now = new Date().getTime();
             const dist = releaseDate - now;
@@ -430,7 +431,7 @@
             const msg = document.getElementById('subscribe-msg');
             
             try {
-                const res = await fetch('http://localhost:3000/api/subscribe', {
+                const res = await fetch('/api/subscribe', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })

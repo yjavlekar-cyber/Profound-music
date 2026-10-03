@@ -1,0 +1,39 @@
+# Dockerfile itself
+Dockerfile
+.dockerignore
+
+# Local dependencies (container installs its own via npm ci)
+node_modules/
+npm-debug.log*
+
+# Environment & secrets (passed via docker-compose, never baked in)
+.env
+.env.*
+*.pem
+*.key
+*.cert
+
+# Git
+.git
+.gitignore
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Docs / non-production files
+*.md
+LICENSE
+
+# Test files
+*.test.js
+*.spec.js
+__tests__/
+coverage/
