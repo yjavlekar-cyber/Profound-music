@@ -1,4 +1,4 @@
-# 🎭 Profound — Official Artist Profile Platform
+# Profound — Official Artist Profile Platform
 
 Welcome to the official source repository for **Profound**. This project is a cloud-native, production-grade web platform designed to host the artist profile, portfolios, and dynamic media galleries for Profound. 
 
